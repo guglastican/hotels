@@ -1,0 +1,21 @@
+<div
+  class="
+    border-b
+    border-gray-200
+    py-4
+  "
+>
+  <%= component("ContentWrapper") do %>
+    <div
+      class="
+        flex
+        items-center
+        justify-between
+      "
+    >
+      <%= image_tag("logo.svg", class: "w-40") %>
+
+      <%= component("LoggedInUser", user: Current.user) %>
+    </div>
+  <% end %>
+</div>
