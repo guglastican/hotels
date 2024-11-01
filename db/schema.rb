@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_01_023704) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_01_031408) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "geo_regions", force: :cascade do |t|
     t.integer "geo_state_id", null: false
     t.string "title"
@@ -63,7 +66,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_01_023704) do
     t.boolean "is_owner", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["organization_id"], name: "index_organizations_users_on_organization_id"
+    t.index ["user_id"], name: "index_organizations_users_on_user_id"
   end
 
   create_table "place_types", force: :cascade do |t|
@@ -84,6 +89,25 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_01_023704) do
     t.index ["place_type_id"], name: "index_places_on_place_type_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "user_agent"
+    t.string "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.boolean "verified", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
   add_foreign_key "geo_regions", "geo_states"
   add_foreign_key "images", "organizations"
   add_foreign_key "listings", "organizations"
@@ -91,4 +115,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_01_023704) do
   add_foreign_key "organizations_users", "organizations"
   add_foreign_key "places", "geo_regions"
   add_foreign_key "places", "place_types"
+  add_foreign_key "sessions", "users"
 end
