@@ -28,6 +28,13 @@ Rails.application.routes.draw do
 
   # V1
   namespace :v1, path: '/' do
+
+    # Dashboard
+    namespace :dashboard do
+      
+      # Listings
+      resources :listings
     
+    end
   end
 end

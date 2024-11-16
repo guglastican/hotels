@@ -9,6 +9,8 @@ class User < ApplicationRecord
     password_salt.last(10)
   end
 
+  belongs_to :role
+
   has_many :organizations_users
   has_many :organizations, through: :organizations_users
 
@@ -19,6 +21,8 @@ class User < ApplicationRecord
 
   normalizes :email, with: -> { _1.strip.downcase }
 
+  before_validation :set_default_attributes
+
   before_validation if: :email_changed?, on: :update do
     self.verified = false
   end
@@ -26,4 +30,24 @@ class User < ApplicationRecord
   after_update if: :password_digest_previously_changed? do
     sessions.where.not(id: Current.session).delete_all
   end
+
+  def admin?
+    role_key == "admin"
+  end
+  
+  def organization_user?
+    role_key == "organization_user"
+  end
+
+  def role_key
+    @role_key ||= self.role&.key
+  end
+
+  private
+
+    def set_default_attributes
+      self.attributes = {
+        role: self.role || Role.find_by(key: "organization_user"),
+      }
+    end
 end

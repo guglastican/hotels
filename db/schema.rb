@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_01_031408) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_15_044138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -89,6 +89,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_01_031408) do
     t.index ["place_type_id"], name: "index_places_on_place_type_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "key"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "user_agent"
@@ -105,7 +112,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_01_031408) do
     t.boolean "verified", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "geo_regions", "geo_states"
