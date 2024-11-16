@@ -1,0 +1,19 @@
+<%= component("DashboardLayout", alert: alert, notice: notice) do %>
+  <%= component("DashboardLayout/Content_Container") do |container| %>
+    <% container.with_header_content(title: "Places") do |header| %>
+      <% header.with_heading_right do %>
+        <%= component("Button",
+          attributes: {
+            href: new_v1_dashboard_place_path,
+          },
+          variant: :primary,
+          size: :sm,
+        ) { "New Place" } %>
+      <% end %>
+    <% end %>
+
+    <% container.with_main_content do %>
+      <%= component("Dashboard/Places/List", places: @places) %>
+    <% end %>
+  <% end %>
+<% end %>

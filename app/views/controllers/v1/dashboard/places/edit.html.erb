@@ -1,0 +1,24 @@
+<%= component("DashboardLayout", alert: alert, notice: notice) do %>
+  <%= component("DashboardLayout/Content_Container") do |container| %>
+    <% container.with_header_content(title: "Edit Place") do |header| %>
+      <% header.with_heading_right do %>
+        <%= component("Button",
+          attributes: {
+            href: v1_dashboard_places_path,
+          },
+          variant: :primary,
+          size: :sm,
+        ) { "Back" } %>
+      <% end %>
+    <% end %>
+
+    <% container.with_main_content do %>
+      <div class="w-full max-w-[640px]">
+      <%= render partial: "v1/dashboard/places/form", locals: {
+        geo_regions: @geo_regions,
+        place: @place,
+        place_types: @place_types,
+      } %>
+    <% end %>
+  <% end %>
+<% end %>

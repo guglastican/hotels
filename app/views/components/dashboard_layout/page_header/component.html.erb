@@ -1,11 +1,18 @@
 <header
   class="
-    flex
     border-b
+    flex
+    items-center
+    justify-between
     p-4
     pt-8
-    text-xl
   "
 >
-  <%= title %>
+  <span class="text-xl">
+    <%= title %>
+  </span>
+
+  <div class="flex items-center gap-1">
+    <%= heading_right %>
+  </div>
 </header>

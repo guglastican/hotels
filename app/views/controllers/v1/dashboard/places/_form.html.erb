@@ -1,0 +1,49 @@
+<%= form_with(model: [:v1, :dashboard, place], html: { autocomplete: "off", class: "w-full" }) do |form| %>
+  <%= component("Form/Errors", entity: place) %>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :geo_region_id,
+      field_type: :select,
+      form: form,
+      label: "Region",
+      option_values: geo_regions.map { |geo_region| [geo_region.title, geo_region.id] },
+      value: place.geo_region_id || params[:geo_region_id] || "",
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :place_type_id,
+      field_type: :select,
+      form: form,
+      label: "Place Type",
+      option_values: place_types.map { |place_type| [place_type.title, place_type.id] },
+      value: place.place_type_id || params[:place_type_id] || "",
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :title,
+      form: form,
+      label: "Title",
+      value: place.title,
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :description,
+      field_type: :text_area,
+      form: form,
+      label: "Description",
+      value: place.description,
+    ) %>
+  </div>
+
+  <%= component("Button",
+    variant: :primary,
+    size: :md,
+  ) { "Save Place" } %>
+<% end %>

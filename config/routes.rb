@@ -32,6 +32,9 @@ Rails.application.routes.draw do
     # Dashboard
     namespace :dashboard do
       
+      # Places
+      resources :places
+
       # Listings
       resources :listings
     

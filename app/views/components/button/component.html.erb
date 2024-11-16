@@ -1,0 +1,91 @@
+<% if attributes[:href].present? %>
+  <%= link_to(
+    attributes[:href],
+    class: style(disabled:, size:, variant:),
+    **attributes,
+  ) do %>
+    <span
+      class="
+        hidden
+        group-aria-busy/form:block
+        group-data-[loading='true']/button:block
+      "
+    >
+      <i class="fa-regular fa-spinner-third fa-spin"></i>
+    </span>
+
+    <% if icon %>
+      <i
+        class="
+          block
+          group-aria-busy/form:hidden
+          group-data-[loading='true']/button:hidden
+          pointer-events-none
+          <%= icon_style %>
+          <%= icon %>
+      "></i>
+    <% end %>
+
+    <%= content %>
+  <% end %>
+<% elsif !form_method.present? %>
+  <%= button_tag(
+    class: style(disabled:, size:, variant:),
+    **attributes,
+  ) do %>
+    <span
+      class="
+        hidden
+        group-aria-busy/form:block
+        group-data-[loading='true']/button:block
+      "
+    >
+      <i class="fa-regular fa-spinner-third fa-spin"></i>
+    </span>
+
+    <% if icon %>
+      <i
+        class="
+          block
+          group-aria-busy/form:hidden
+          group-data-[loading='true']/button:hidden
+          pointer-events-none
+          <%= icon_style %>
+          <%= icon %>
+      "></i>
+    <% end %>
+
+    <%= content %>
+  <% end %>
+<% else %>
+  <%= button_to(
+    @path,
+    class: style(disabled:, size:, variant:),
+    method: form_method,
+    **attributes,
+  ) do %>
+    <span
+      class="
+        hidden
+        group-aria-busy/form:block
+        group-data-[loading='true']/button:block
+      "
+    >
+      <i class="fa-regular fa-spinner-third fa-spin"></i>
+    </span>
+
+    <% if icon %>
+      <i
+        class="
+          block
+          group-aria-busy/form:hidden
+          group-data-[loading='true']/button:hidden
+          pointer-events-none
+          <%= icon_style %>
+          <%= icon %>
+      "></i>
+    <% end %>
+
+    <%= content %>
+  <% end %>
+<% end %>

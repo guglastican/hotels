@@ -1,0 +1,12 @@
+<div
+  class="
+   flex
+   flex-col
+   gap-2
+   w-full
+  "
+>
+  <% places.each do |place| %>
+    <%= component("Dashboard/Places/List/Place", place: place) %>
+  <% end %>
+</div>

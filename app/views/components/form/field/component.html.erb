@@ -1,0 +1,44 @@
+<div class="w-full">
+  <% if label.present? %>
+    <%= component("Form/Label", form: form) { label } %>
+  <% end %>
+
+  <div class="flex w-full gap-1">
+    <% if @field_type == :select %>
+        <%= @form.send(
+          @field_type,
+          @attribute_key,
+          @option_values,
+          {
+            include_blank: "Please Select...",
+            selected: @value || @option_values.first,
+          }.merge(@select_options),
+          {
+            class: style(),
+            data: {},
+          }.merge(@field_options),
+        ) %>
+    <% else %>
+      <%= @form.send(
+        @field_type,
+        @attribute_key,
+        {
+          autocomplete: @autocomplete,
+          class: style(),
+          placeholder: @placeholder,
+          value: @value,
+        }.merge(@field_options),
+      ) %>
+    <% end %>
+
+    <% if inline_button? %>
+      <%= inline_button %>
+    <% end %>
+  </div>
+
+  <% if @hint.present? %>
+    <p class="text-sm mb-3 text-text-secondary">
+      <%= @hint %>
+    </p>
+  <% end %>
+</div>

@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
 
   append_view_path Rails.root.join("app", "views", "controllers")
 
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+
   private
 
     def authenticate(options = {})
@@ -32,5 +34,9 @@ class ApplicationController < ActionController::Base
 
     def pundit_user
       Current.user
+    end
+
+    def not_authorized
+      redirect_to root_path
     end
 end

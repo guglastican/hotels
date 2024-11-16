@@ -1,0 +1,31 @@
+<div
+  class="
+    bg-field-background
+    border
+    border-field-border
+    flex
+    flex-col
+    gap-2
+    mb-3
+    px-4
+    py-3
+    rounded
+    text-sm
+    text-text
+    w-full
+  "
+>
+  <h2 class="text-lg">
+    <i class="text-red-400 fa-solid fa-circle-exclamation"></i> Whoops!
+  </h2>
+
+  <p>
+    <%= pluralize(entity.errors.count, "error") %> prohibited this from being saved:
+  </p>
+
+  <ul class="list-disc list-inside">
+    <% entity.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>

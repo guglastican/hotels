@@ -4,4 +4,6 @@ class Place < ApplicationRecord
 
   has_many :listings
   has_many :images, as: :subject
+
+  validates :title, presence: true
 end

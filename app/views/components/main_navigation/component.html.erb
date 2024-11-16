@@ -23,7 +23,7 @@
       mt-8
     "
   >
+    <%= component("MainNavigation/Link", path: v1_dashboard_places_path, should_render: Current.user&.admin?, title: "Places") %>
     <%= component("MainNavigation/Link", path: v1_dashboard_listings_path, title: "Listings") %>
-    <%= component("MainNavigation/Link", path: "", title: "Places") %>
   </div>
 </aside>
