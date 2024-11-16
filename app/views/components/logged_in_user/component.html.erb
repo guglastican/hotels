@@ -1,6 +1,6 @@
 <div>
   <% if user.present? %>
-    <%= user.email %>
+    <%= link_to "Dashboard", v1_dashboard_listings_path %>
   <% else %>
     Logged out
   <% end %>

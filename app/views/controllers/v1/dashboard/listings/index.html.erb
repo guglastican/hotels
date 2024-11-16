@@ -1,3 +1,9 @@
-Hello Listings
+<%= component("DashboardLayout", alert: alert, notice: notice) do %>
+  <%= component("DashboardLayout/Content_Container") do |container| %>
+    <% container.with_header_content(title: "Listings") %>
 
-<%= @listings.to_json %>
+    <% container.with_main_content do %>
+      Main Content
+    <% end %>
+  <% end %>
+<% end %>

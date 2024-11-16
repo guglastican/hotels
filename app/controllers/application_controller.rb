@@ -11,12 +11,18 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def authenticate
+    def authenticate(options = {})
+      skip_redirect = options[:skip_redirect] || false
+
       if session_record = Session.find_by_id(cookies.signed[:session_token])
         Current.session = session_record
-      else
-        redirect_to sign_in_path
+      else 
+        redirect_to sign_in_path unless skip_redirect
       end
+    end
+
+    def authenticate_without_redirect
+      authenticate({ skip_redirect: true })
     end
 
     def set_current_request_details

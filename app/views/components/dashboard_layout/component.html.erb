@@ -1,0 +1,19 @@
+<section
+  class="
+    flex
+    flex-col
+    lg:flex-row
+    h-full
+    w-full
+  "
+>
+  <div id="toast_container">
+    <%= component("Toast", alert: alert, notice: notice) %>
+  </div>
+
+  <%= component("MainNavigation") %>
+
+  <%= content %>
+
+  <%= helpers.turbo_frame_tag "modal-portal" %>
+</section>

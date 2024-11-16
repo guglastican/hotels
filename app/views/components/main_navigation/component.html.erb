@@ -1,0 +1,29 @@
+<aside
+  class="
+    group/mainnav
+    border-r
+    flex-col
+    h-screen
+    hidden
+    items-start
+    sm:flex
+    p-4
+    w-48
+    z-50
+  "
+  id="main-navigation"
+>
+  <%= image_tag("logo.svg", class: "w-56") %>
+
+  <div
+    class="
+      flex
+      flex-col
+      gap-1
+      mt-8
+    "
+  >
+    <%= component("MainNavigation/Link", path: v1_dashboard_listings_path, title: "Listings") %>
+    <%= component("MainNavigation/Link", path: "", title: "Places") %>
+  </div>
+</aside>
