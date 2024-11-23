@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Landing::Featured::Component < ApplicationViewComponent
+class Dashboard::Listings::List::Component < ApplicationViewComponent
   option :listings, default: proc { Listing.none }
 end

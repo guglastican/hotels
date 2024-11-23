@@ -14,6 +14,11 @@ class User < ApplicationRecord
   has_many :organizations_users
   has_many :organizations, through: :organizations_users
 
+  has_many :organizations_where_admin, -> { where(organizations_users: { is_admin: true }) }, through: :organizations_users, source: :organization
+  has_many :organizations_where_default, -> { where(organizations_users: { is_default: true }) }, through: :organizations_users, source: :organization
+  has_many :organizations_where_owner, -> { where(organizations_users: { is_admin: true, is_owner: true }) }, through: :organizations_users, source: :organization
+  has_many :organizations_where_user, -> { where(organizations_users: { is_admin: false, is_guest: false, is_owner: false }) }, through: :organizations_users, source: :organization
+
   has_many :sessions, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -33,6 +38,17 @@ class User < ApplicationRecord
 
   def admin?
     role_key == "admin"
+  end
+
+  def default_organization_id=(organization_id)
+    User.transaction do
+      self.organizations_users.update_all(is_default: false, updated_at: Time.current)
+      self.organizations_users.find_by(id: organization_id).update(is_default: true)
+    end
+  end
+
+  def default_organization
+    @default_organization ||= self.organizations_where_default.first
   end
   
   def organization_user?

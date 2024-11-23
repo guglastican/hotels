@@ -1,0 +1,12 @@
+<div
+  class="
+   flex
+   flex-col
+   gap-2
+   w-full
+  "
+>
+  <% listings.each do |listing| %>
+    <%= component("Dashboard/Listings/List/Listing", listing: listing) %>
+  <% end %>
+</div>

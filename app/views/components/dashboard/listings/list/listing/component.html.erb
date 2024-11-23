@@ -1,0 +1,30 @@
+<article
+  class="
+    flex
+    items-center
+    gap-2
+    w-full
+  "
+  id="<%= dom_id(listing) %>"
+>
+  <div class="w-16 h-16 bg-gray-200 rounded-lg"></div>
+
+  <div class="flex flex-col justify-center">
+    <span class="font-md"><%= listing.title %></span>
+    <span class="text-sm">
+      Listing Type
+      <span>in</span>
+      <%= listing.place.title %>
+    </span>
+  </div>
+
+  <div class="flex gap-1 ml-auto">
+    <%= component("Button",
+      attributes: {
+        href: edit_v1_dashboard_listing_path(listing),
+      },
+      variant: :outline,
+      size: :sm,
+    ) { "Edit" } %>
+  </div>
+</article>

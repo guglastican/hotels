@@ -2,7 +2,7 @@
 
 <%= component("ContentWrapper") do %>
   <%= component("Landing/Hero") %>
-  <%= component("Landing/Featured") %>
+  <%= component("Landing/Featured", listings: @featured_listings) %>
 <% end %>
 
 <%= component("Footer") %>

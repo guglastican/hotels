@@ -9,12 +9,9 @@
       mt-4
     "
   >
-    <%= component("Landing/Featured/Listing") %>
-    <%= component("Landing/Featured/Listing") %>
-    <%= component("Landing/Featured/Listing") %>
-    <%= component("Landing/Featured/Listing") %>
-    <%= component("Landing/Featured/Listing") %>
-    <%= component("Landing/Featured/Listing") %>
+    <% listings.each do |listing| %>
+      <%= component("Landing/Featured/Listing", listing: listing) %>
+    <% end %>
   </div>
 </section>
 

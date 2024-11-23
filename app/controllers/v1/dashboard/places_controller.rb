@@ -7,12 +7,12 @@ module V1
       def index
         @places = policy_scope(Place)
           .includes(:geo_region, :place_type)
-        
         authorize @places
       end
 
       def new
         @place = Place.new
+        authorize @place
       end
 
       def create
@@ -40,9 +40,12 @@ module V1
       end
 
       def edit
+        authorize @place
       end
 
       def update
+        authorize @place
+
         if @place.update(place_params)
           respond_to do |format|
             format.turbo_stream do

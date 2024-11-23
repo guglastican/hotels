@@ -1,0 +1,38 @@
+<%= form_with(model: [:v1, :dashboard, listing], html: { autocomplete: "off", class: "w-full" }) do |form| %>
+  <%= component("Form/Errors", entity: listing) %>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :place_id,
+      field_type: :select,
+      form: form,
+      label: "Location",
+      option_values: places.map { |place| [place.title, place.id] },
+      value: listing.place_id || params[:place_id] || "",
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :title,
+      form: form,
+      label: "Title",
+      value: listing.title,
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :description,
+      field_type: :text_area,
+      form: form,
+      label: "Description",
+      value: listing.description,
+    ) %>
+  </div>
+
+  <%= component("Button",
+    variant: :primary,
+    size: :md,
+  ) { "Save Listing" } %>
+<% end %>

@@ -1,19 +1,23 @@
 <%= component("DashboardLayout", alert: alert, notice: notice) do %>
   <%= component("DashboardLayout/Content_Container") do |container| %>
-    <% container.with_header_content(title: "Listings") do |header| %>
+    <% container.with_header_content(title: "Edit Listing") do |header| %>
       <% header.with_heading_right do %>
         <%= component("Button",
           attributes: {
-            href: new_v1_dashboard_listing_path,
+            href: v1_dashboard_listings_path,
           },
           variant: :primary,
           size: :sm,
-        ) { "New Listing" } %>
+        ) { "Back" } %>
       <% end %>
     <% end %>
 
     <% container.with_main_content do %>
-      <%= component("Dashboard/Listings/List", listings: @listings) %>
+      <div class="w-full max-w-[640px]">
+      <%= render partial: "v1/dashboard/listings/form", locals: {
+        listing: @listing,
+        places: @places,
+      } %>
     <% end %>
   <% end %>
 <% end %>
