@@ -1,0 +1,29 @@
+<div
+  class="flex flex-col w-full"
+  data-controller="<%= component_identifier("UploadDropzone") %>"
+  data-<%= component_identifier("UploadDropzone") %>-allowed-file-types-value="<%= allowed_file_types %>"
+  data-<%= component_identifier("UploadDropzone") %>-direct-upload-url-value="<%= Rails.application.routes.url_helpers.rails_direct_uploads_path %>"
+  data-<%= component_identifier("UploadDropzone") %>-field-name-value="<%= field_name %>"
+  data-<%= component_identifier("UploadDropzone") %>-update-url-value="<%= update_url %>"
+>
+  <button
+    class="
+      border-2
+      border-button-outline-border
+      font-medium
+      gap-2
+      inline-flex
+      items-center
+      justify-center
+      px-4
+      py-2
+      rounded-lg
+      text-button-outline-text
+    "
+    data-<%= component_identifier("UploadDropzone") %>-target="dashboardTrigger"
+    type="button"
+  >
+    <i class="block group-data-[loading='true']/button:hidden fa-regular fa-cloud-arrow-up"></i>
+    <%= button_text %>
+  </button>
+</div>

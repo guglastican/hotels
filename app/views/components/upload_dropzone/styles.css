@@ -1,0 +1,19 @@
+.uppy-DragDrop-container {
+  background-color: transparent;
+  border-width: 1px;
+  border-color: rgb(var(--color-border) / var(--tw-border-opacity));
+  color: rgb(var(--color-text-secondary) / var(--tw-text-opacity));
+}
+
+.uppy-DragDrop-container .uppy-DragDrop-arrow {
+  height: 40px;
+  width: 40px;
+}
+
+.uppy-DragDrop-browse {
+  color: rgb(var(--color-primary) / var(--tw-bg-opacity));
+}
+
+.uppy-Dashboard-isFixed {
+  height: auto;
+}

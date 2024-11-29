@@ -31,6 +31,22 @@
     ) %>
   </div>
 
+  <div class="flex flex-wrap gap-2 mb-2" id="images">
+    <% listing.images.each do |image| %>
+      <%= component("Dashboard/Image_Thumb", image: image) %>
+    <% end %>
+
+    <%= component("UploadDropzone",
+      allowed_file_types: ["image/*"],
+      field_name: "image[file]",
+      update_url: v1_dashboard_images_create_from_file_path(
+        organization_id: listing.organization_id,
+        subject_type: "Listing",
+        subject_id: listing.id,
+      ),
+    ) %>
+  </div>
+
   <%= component("Button",
     variant: :primary,
     size: :md,
