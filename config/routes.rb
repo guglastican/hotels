@@ -39,5 +39,12 @@ Rails.application.routes.draw do
       # Listings
       resources :listings
     end
+
+    # Public
+    resources :listings, only: [ :show ] do
+      member do
+        get :gallery
+      end
+    end
   end
 end

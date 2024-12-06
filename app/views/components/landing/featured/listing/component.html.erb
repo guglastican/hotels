@@ -1,4 +1,4 @@
-<div
+<a
   class="
     flex
     flex-col
@@ -7,6 +7,7 @@
     rounded-lg
     w-full
   "
+  href="<%= v1_listing_path(listing) %>"
 >
   <div class="w-full h-48 bg-gray-200 rounded-lg overflow-hidden">
     <% if listing.default_image&.file&.attached? %>
@@ -18,4 +19,4 @@
     <h3 class="text-lg font-bold"><%= listing.title %></h3>
     <p class="text-sm text-gray-500"><%= listing.description %></p>
   </div>
-</div>
+</a>

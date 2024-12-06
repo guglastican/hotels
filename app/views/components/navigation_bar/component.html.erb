@@ -13,7 +13,9 @@
         justify-between
       "
     >
-      <%= image_tag("logo.svg", class: "w-56") %>
+      <a href="/">
+        <%= image_tag("logo.svg", class: "w-56") %>
+      </a>
 
       <%= component("LoggedInUser", user: Current.user) %>
     </div>

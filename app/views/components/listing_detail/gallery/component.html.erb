@@ -1,0 +1,13 @@
+<%= component("ListingLayout/Content_Module", title: "Gallery") do %>
+  <div
+    class="
+      grid
+      grid-cols-2
+      gap-2
+    "
+  >
+    <% images.each do |image| %>
+      <%= component("ListingDetail/Gallery/Image", image: image) %>
+    <% end %>
+  </div>
+<% end %>

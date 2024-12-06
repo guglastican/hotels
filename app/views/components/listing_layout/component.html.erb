@@ -1,0 +1,18 @@
+<div
+  class="
+    flex
+    flex-col
+    lg:flex-row
+    lg:gap-12
+    gap-4
+    w-full
+  "
+>
+  <% if main_content? %>
+    <%= main_content %>
+  <% end %>
+  
+  <% if right_sidebar? %>
+    <%= right_sidebar %>
+  <% end %>
+</div>

@@ -1,0 +1,17 @@
+<%= component("NavigationBar") %>
+
+<%= component("ContentWrapper") do %>
+  <%= component("ListingDetail/Hero", listing: @listing) %>
+
+  <%= component("ListingLayout") do |listing_layout| %>
+    <% listing_layout.with_main_content do %>
+      <%= component("ListingDetail/Description", listing: @listing) %>
+    <% end %>
+
+    <% listing_layout.with_right_sidebar do %>
+      <%= component("ListingDetail/Gallery", listing: @listing) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= component("Footer") %>
