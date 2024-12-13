@@ -79,3 +79,4 @@ gem "view_component-contrib", "~> 0.2.3"
 
 # Dry Initializer [https://github.com/dry-rb]
 gem "dry-initializer", "~> 3.1"
+gem "pg_search", "~> 2.3"

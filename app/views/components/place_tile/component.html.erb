@@ -1,0 +1,25 @@
+<a
+  class="
+    flex
+    flex-col
+    gap-2
+    bg-white
+    rounded-lg
+    w-full
+  "
+  href="<%= v1_place_path(place) %>"
+>
+  <div class="w-full h-48 bg-gray-200 rounded-lg overflow-hidden">
+    <% if place.default_image&.file&.attached? %>
+      <%= image_tag(place.default_image.file.variant(resize_to_limit: [1200, 800]), class: "w-full h-full object-cover") %>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col">
+    <h3 class="text-lg font-bold"><%= place.title %></h3>
+    <p class="text-sm text-gray-500"><%= place.description %></p>
+    <% if place.respond_to?(:pg_search_rank) %>
+      <span class="text-xs"><%= place.pg_search_rank %></span>
+    <% end %>
+  </div>
+</a>

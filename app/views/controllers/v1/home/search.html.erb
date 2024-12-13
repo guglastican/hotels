@@ -1,0 +1,9 @@
+<%= component("NavigationBar") %>
+
+<%= component("ContentWrapper") do %>
+  <%= component("SearchPage/Search") %>
+
+  <%= component("SearchPage/Results", results: @results) %>
+<% end %>
+
+<%= component("Footer") %>

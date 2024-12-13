@@ -1,0 +1,39 @@
+<%= form_with(
+  url: v1_search_path,
+  method: :get,
+  class: "
+    flex
+    gap-4
+    items-center
+    rounded-lg
+    p-2
+    bg-white
+    drop-shadow-xl
+    w-full
+  ",
+) do |form| %>
+  <input
+    class="
+      outline-none
+      text-lg
+      p-4
+      w-full
+    "
+    name="string"
+    placeholder="Try searching for a beach e.g. Narrabeen"
+    type="text"
+    value="<%= value %>"
+  />
+
+  <button
+    class="
+      bg-black
+      text-white
+      rounded-lg
+      px-4
+      py-2
+    "
+  >
+    Search
+  </button>
+<% end %>

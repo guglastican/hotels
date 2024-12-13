@@ -41,10 +41,14 @@ Rails.application.routes.draw do
     end
 
     # Public
+    get :search, to: "home#search"
+
     resources :listings, only: [ :show ] do
       member do
         get :gallery
       end
     end
+
+    resources :places, only: [ :show ]
   end
 end

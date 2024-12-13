@@ -1,0 +1,16 @@
+<section>
+  <h2 class="text-2xl font-bold">Places</h2>
+
+  <div
+    class="
+      grid
+      grid-cols-3
+      gap-8
+      mt-4
+    "
+  >
+    <% places.each do |place| %>
+      <%= component("PlaceTile", place: place) %>
+    <% end %>
+  </div>
+</section>
