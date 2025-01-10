@@ -1,0 +1,23 @@
+<div
+  class="
+    flex
+    items-center
+    gap-2
+    text-sm
+    w-full
+  "
+>
+  <div
+    class="
+      flex
+      flex-col
+    "
+  >
+    <span class="font-medium text-text-secondary"><%= label %></span>
+    <% if url.present? %>
+      <%= link_to value, url, { data: { turbo_prefetch: false }} %>
+    <% else %>
+      <span><%= value %></span>
+    <% end %>
+  </div>
+</div>

@@ -9,6 +9,7 @@
     <% end %>
 
     <% listing_layout.with_right_sidebar do %>
+      <%= component("ListingDetail/Contact", listing: @listing) %>
       <%= component("ListingDetail/Gallery", listing: @listing) %>
     <% end %>
   <% end %>

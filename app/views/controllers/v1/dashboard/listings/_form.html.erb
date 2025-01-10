@@ -31,6 +31,66 @@
     ) %>
   </div>
 
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :website_url,
+      field_type: :url_field,
+      form: form,
+      label: "Website Url",
+      value: listing.website_url,
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :phone,
+      field_type: :telephone_field,
+      form: form,
+      label: "Phone",
+      value: listing.phone,
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :email,
+      field_type: :email_field,
+      form: form,
+      label: "Email",
+      value: listing.email,
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :booking_url,
+      field_type: :url_field,
+      form: form,
+      label: "Booking Url",
+      value: listing.booking_url,
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :instagram_url,
+      field_type: :url_field,
+      form: form,
+      label: "Instagram Url",
+      value: listing.instagram_url,
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
+      attribute_key: :facebook_url,
+      field_type: :url_field,
+      form: form,
+      label: "Facebook Url",
+      value: listing.facebook_url,
+    ) %>
+  </div>
+
   <div class="flex flex-wrap gap-2 mb-2" id="images">
     <% listing.images.each do |image| %>
       <%= component("Dashboard/Image_Thumb", image: image) %>

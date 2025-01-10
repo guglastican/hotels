@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_13_040608) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_10_045246) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_13_040608) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.virtual "searchable", type: :tsvector, as: "(setweight(to_tsvector('english'::regconfig, (COALESCE(title, ''::character varying))::text), 'A'::\"char\") || setweight(to_tsvector('english'::regconfig, COALESCE(description, ''::text)), 'B'::\"char\"))", stored: true
+    t.string "booking_url"
+    t.string "website_url"
+    t.string "instagram_url"
+    t.string "facebook_url"
+    t.string "phone"
+    t.string "email"
     t.index ["organization_id"], name: "index_listings_on_organization_id"
     t.index ["place_id"], name: "index_listings_on_place_id"
     t.index ["searchable"], name: "index_listings_on_searchable", using: :gin
@@ -99,6 +105,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_13_040608) do
     t.bigint "user_id"
     t.index ["organization_id"], name: "index_organizations_users_on_organization_id"
     t.index ["user_id"], name: "index_organizations_users_on_user_id"
+  end
+
+  create_table "outbound_clicks", force: :cascade do |t|
+    t.bigint "organization_id"
+    t.string "subject_type"
+    t.bigint "subject_id"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_outbound_clicks_on_organization_id"
+    t.index ["subject_type", "subject_id"], name: "index_outbound_clicks_on_subject"
   end
 
   create_table "place_types", force: :cascade do |t|

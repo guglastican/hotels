@@ -43,12 +43,17 @@ Rails.application.routes.draw do
     # Public
     get :search, to: "home#search"
 
+    # Listings
     resources :listings, only: [ :show ] do
       member do
         get :gallery
       end
     end
 
+    # Outbound Clicks
+    get "out", to: "outbound_clicks#track_click"
+
+    # Places
     resources :places, only: [ :show ]
   end
 end

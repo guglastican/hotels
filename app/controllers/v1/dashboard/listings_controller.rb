@@ -26,7 +26,7 @@ module V1
 
               flash[:notice] = "Listing was successfully created."
               turbo_actions = [
-                turbo_stream.action(:redirect, redirect_path),
+                turbo_stream.action(:redirect, redirect_path)
               ]
 
               render turbo_stream: turbo_actions
@@ -53,7 +53,7 @@ module V1
 
               flash[:notice] = "Listing was successfully updated."
               turbo_actions = [
-                turbo_stream.action(:redirect, redirect_path),
+                turbo_stream.action(:redirect, redirect_path)
               ]
 
               render turbo_stream: turbo_actions
@@ -81,12 +81,17 @@ module V1
         def listing_params
           params.fetch(:listing, {})
             .permit(
+              :booking_url,
               :description,
+              :email,
+              :facebook_url,
+              :instagram_url,
+              :phone,
               :place_id,
               :title,
+              :website_url,
             )
         end
-
     end
   end
 end

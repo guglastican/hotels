@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		overscroll-behavior: none;
+	}
+
+	:root {
+		--color-background: 255 255 255;
+		--color-background-modal: 255 255 255;
+		--color-background-modal-hover: 250 250 250;
+		--color-background-module: 251 251 251;
+		--color-primary: 244 96 54;
+		--color-primary-foreground: 255 255 255;
+
+		--color-text: 26 26 26;
+		--color-text-secondary-mid: 72 72 72;
+		--color-text-secondary: 131 131 131;
+		--color-text-tertiary: 183 183 183;
+
+		--color-border: 229 229 229;
+		--color-border-hover: 244 96 54;
+		--color-border-modal: 82 82 82;
+		--color-border-module: 229 229 229;
+		--color-tile-background: 255 255 255;
+		--color-modal-overlay: 255 255 255;
+
+		--color-form-label: 55 65 81;
+		--color-field-border: 229 231 235;
+		--color-field-background: 255 255 255;
+
+		--color-button-primary-background: 244 96 54;
+		--color-button-primary-border: 244 96 54;
+		--color-button-primary-text: 255 255 255;
+		--color-button-secondary-background: 249 249 249;
+		--color-button-secondary-border: 214 214 214;
+		--color-button-secondary-text: 26 26 26;
+		--color-button-outline-border: 229 229 229;
+		--color-button-outline-text: 26 26 26;
+
+		--color-scrollbar-thumb: 229 229 229;
+	}
+}

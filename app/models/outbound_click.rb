@@ -1,0 +1,2 @@
+class OutboundClick < ApplicationRecord
+end

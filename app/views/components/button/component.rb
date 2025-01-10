@@ -15,7 +15,7 @@ class Button::Component < ApplicationViewComponent
     {
       autocomplete: "off",
       data: {},
-      required: false,
+      required: false
     }.merge(_1)
   }
 
@@ -84,6 +84,14 @@ class Button::Component < ApplicationViewComponent
             text-base
           ]
         }
+        xl {
+          %w[
+            gap-2
+            px-5
+            py-3
+            text-lg
+          ]
+        }
       }
       variant {
         primary {
@@ -128,7 +136,7 @@ class Button::Component < ApplicationViewComponent
       {
         disabled: false,
         size: :sm,
-        variant: :primary,
+        variant: :primary
       }
     }
 
@@ -148,10 +156,10 @@ class Button::Component < ApplicationViewComponent
 
   def stimulus_controllers
     if attributes.dig(:data, :controller).present?
-      return ([default_stimulus_controller] + attributes[:data][:controller].split).join(" ")
+      return ([ default_stimulus_controller ] + attributes[:data][:controller].split).join(" ")
     end
-    
-    return default_stimulus_controller
+
+    default_stimulus_controller
   end
 
   def before_render

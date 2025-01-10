@@ -1,0 +1,65 @@
+<%= component("ListingLayout/Content_Module", title: nil) do %>
+  <div
+    class="
+      flex
+      flex-col
+      gap-4
+      w-full
+    "
+  >
+    <div
+      class="
+        flex
+        flex-col
+        items-center
+        gap-1
+        w-full
+      "
+    >
+      <%= component("Button",
+        attributes: {
+          style: "width: 100%;",
+        },
+        variant: :primary,
+        size: :xl,
+      ){ "Reserve Now" } %>
+
+      <span
+        class="
+          text-xs
+          text-text-secondary
+        "
+      >
+        Go to Booking Website
+      </span>
+    </div>
+
+    <hr class="border-t border-border" />
+
+    <%= component("ListingDetail/Contact/Item",
+      label: "Website",
+      url: v1_out_path(subject_type: "Listing", subject_id: listing.id, organization_id: listing.organization_id, url: listing.website_url),
+      value: listing.website_url,
+    ) %>
+
+    <%= component("ListingDetail/Contact/Item",
+      label: "Email",
+      value: listing.email,
+    ) %>
+
+    <%= component("ListingDetail/Contact/Item",
+      label: "Phone",
+      value: listing.phone,
+    ) %>
+    
+    <%= component("ListingDetail/Contact/Item",
+      label: "Instagram",
+      value: listing.instagram_url,
+    ) %>
+
+    <%= component("ListingDetail/Contact/Item",
+      label: "Facebook",
+      value: listing.facebook_url,
+    ) %>
+  </div>
+<% end %>
