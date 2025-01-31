@@ -1,0 +1,16 @@
+<%= component("ListingLayout/Content_Module",
+  title: "Accommodation in #{place.title}"
+) do %>
+  <div
+    class="
+      grid
+      grid-cols-2
+      gap-8
+      mt-4
+    "
+  >
+    <% place.listings.limit(4).each do |listing| %>
+      <%= component("ListingTile", listing: listing) %>
+    <% end %>
+  </div>
+<% end %>

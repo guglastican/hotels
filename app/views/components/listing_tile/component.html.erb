@@ -23,9 +23,5 @@
     <p class="text-sm text-gray-500">
       <%= listing.description.truncate(90) %>
     </p>
-
-    <% if listing.respond_to?(:pg_search_rank) %>
-      <span class="text-xs"><%= listing.pg_search_rank %></span>
-    <% end %>
   </div>
 </a>

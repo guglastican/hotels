@@ -1,0 +1,18 @@
+<%= component("NavigationBar") %>
+
+<%= component("ContentWrapper") do %>
+  <%= component("PlaceDetail/Hero", place: @place) %>
+
+  <%= component("ListingLayout") do |listing_layout| %>
+    <% listing_layout.with_main_content do %>
+      <%= component("PlaceDetail/Description", place: @place) %>
+      <%= component("PlaceDetail/Accommodation", place: @place) %>
+    <% end %>
+
+    <% listing_layout.with_right_sidebar do %>
+      <%= component("PlaceDetail/Gallery", place: @place) %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= component("Footer") %>

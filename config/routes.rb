@@ -54,6 +54,10 @@ Rails.application.routes.draw do
     get "out", to: "outbound_clicks#track_click"
 
     # Places
-    resources :places, only: [ :show ]
+    resources :places, only: [ :show ] do
+      member do
+        get :gallery
+      end
+    end
   end
 end

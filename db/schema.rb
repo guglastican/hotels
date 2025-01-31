@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_10_045246) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_31_043720) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_10_045246) do
     t.index ["subject_type", "subject_id"], name: "index_images_on_subject"
   end
 
+  create_table "listing_types", force: :cascade do |t|
+    t.string "title"
+    t.string "key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "listings", force: :cascade do |t|
     t.integer "organization_id", null: false
     t.integer "place_id", null: false
@@ -84,6 +91,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_10_045246) do
     t.string "facebook_url"
     t.string "phone"
     t.string "email"
+    t.bigint "listing_type_id"
+    t.index ["listing_type_id"], name: "index_listings_on_listing_type_id"
     t.index ["organization_id"], name: "index_listings_on_organization_id"
     t.index ["place_id"], name: "index_listings_on_place_id"
     t.index ["searchable"], name: "index_listings_on_searchable", using: :gin

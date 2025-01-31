@@ -6,7 +6,8 @@ module V1
 
       def index
         @places = policy_scope(Place)
-          .includes(:geo_region, :place_type)
+          .eager_load(:geo_region, :place_type)
+          .order(title: :asc)
         authorize @places
       end
 
@@ -26,7 +27,7 @@ module V1
 
               flash[:notice] = "Place was successfully created."
               turbo_actions = [
-                turbo_stream.action(:redirect, redirect_path),
+                turbo_stream.action(:redirect, redirect_path)
               ]
 
               render turbo_stream: turbo_actions
@@ -53,7 +54,7 @@ module V1
 
               flash[:notice] = "Place was successfully updated."
               turbo_actions = [
-                turbo_stream.action(:redirect, redirect_path),
+                turbo_stream.action(:redirect, redirect_path)
               ]
 
               render turbo_stream: turbo_actions
@@ -86,8 +87,6 @@ module V1
               :title,
             )
         end
-
-
     end
   end
 end

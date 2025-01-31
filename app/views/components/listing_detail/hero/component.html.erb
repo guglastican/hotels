@@ -28,9 +28,9 @@
         text-xl
       "
     >
-      Listing Type
+      <%= listing.listing_type&.title %>
       <span>in</span>
-      <%= listing.place.title %>
+      <%= link_to(listing.place.title, v1_place_path(listing.place), class: "underline") %>
     </h4>
   </div>
 

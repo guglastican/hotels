@@ -7,7 +7,11 @@
   "
   id="<%= dom_id(place) %>"
 >
-  <div class="w-16 h-16 bg-gray-200 rounded-lg"></div>
+  <div class="aspect-[4/3] h-16 bg-gray-200 rounded-lg overflow-hidden">
+    <% if place.default_image&.file&.attached? %>
+      <%= image_tag(place.default_image.file.variant(resize_to_limit: [200, 200]), class: "w-full h-full object-cover") %>
+    <% end %>
+  </div>
 
   <div class="flex flex-col justify-center">
     <span class="font-md"><%= place.title %></span>

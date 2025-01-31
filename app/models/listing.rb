@@ -10,6 +10,7 @@ class Listing < ApplicationRecord
                     }
                   }
 
+  belongs_to :listing_type
   belongs_to :organization
   belongs_to :place
 

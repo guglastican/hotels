@@ -6,6 +6,8 @@ module V1
 
       def index
         @listings = policy_scope(Listing)
+          .eager_load(:place, :listing_type)
+          .order(title: :asc)
         authorize @listings
       end
 
@@ -73,6 +75,7 @@ module V1
         end
 
         def set_form_deps
+          @listing_types = policy_scope(ListingType)
           @places = policy_scope(Place).joins(:place_type)
             .where(place_types: { key: "town" })
             .order(title: :asc)
@@ -86,6 +89,7 @@ module V1
               :email,
               :facebook_url,
               :instagram_url,
+              :listing_type_id,
               :phone,
               :place_id,
               :title,

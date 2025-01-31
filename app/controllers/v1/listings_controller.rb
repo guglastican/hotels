@@ -11,8 +11,10 @@ module V1
     private
 
       def set_listing
-        @listing = Listing.joins(:place)
-          .includes(:place)
+        @listing = Listing.eager_load(
+          :listing_type,
+          :place,
+        )
           .find(params[:id])
       end
   end

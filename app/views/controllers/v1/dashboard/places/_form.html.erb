@@ -35,11 +35,30 @@
   <div class="flex flex-wrap mb-2">
     <%= component("Form/Field",
       attribute_key: :description,
+      field_options: {
+        style: "height: 200px",
+      },
       field_type: :text_area,
       form: form,
       label: "Description",
       value: place.description,
     ) %>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mb-2" id="images">
+    <%= component("UploadDropzone",
+      allowed_file_types: ["image/*"],
+      field_name: "image[file]",
+      update_url: v1_dashboard_images_create_from_file_path(
+        organization_id: Current.user.default_organization,
+        subject_type: "Place",
+        subject_id: place.id,
+      ),
+    ) %>
+
+    <% place.images.each do |image| %>
+      <%= component("Dashboard/Image_Thumb", image: image) %>
+    <% end %>
   </div>
 
   <%= component("Button",

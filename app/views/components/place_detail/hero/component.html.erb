@@ -1,0 +1,51 @@
+<div
+  class="
+    flex
+    flex-col
+    gap-8
+    my-16
+  "
+>
+  <div
+    class="
+      flex
+      flex-col
+    "
+  >
+    <h1
+      class="
+        font-bold
+        leading-snug
+        text-4xl
+      "
+    >
+      <%= place.title %>
+    </h1>
+
+    <h4
+      class="
+        leading-snug
+        text-xl
+      "
+    >
+      <%= place.place_type&.title %>
+      <span>in</span>
+      <%= place.geo_region.title %>
+    </h4>
+  </div>
+
+  <div
+    class="
+      aspect-[16/9]
+      bg-gray-200
+      overflow-hidden
+      relative
+      rounded-lg
+      w-full
+    "
+  >
+    <% if place.default_image&.file&.attached? %>
+      <%= image_tag(place.default_image.file.variant(resize_to_limit: [1200, 800]), class: "w-full h-full object-cover") %>
+    <% end %>
+  </div>
+</div>

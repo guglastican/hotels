@@ -2,9 +2,8 @@
 puts "Started Seeding Place Types..."
 
 palce_types = [
-  { title: "Accommodation", key: "accommodation" },
   { title: "Beach", key: "beach" },
-  { title: "Town", key: "town" },
+  { title: "Town", key: "town" }
 ]
 
 palce_types.each do |place_type|

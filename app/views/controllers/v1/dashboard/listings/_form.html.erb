@@ -14,6 +14,17 @@
 
   <div class="flex flex-wrap mb-2">
     <%= component("Form/Field",
+      attribute_key: :listing_type_id,
+      field_type: :select,
+      form: form,
+      label: "Listing Type",
+      option_values: listing_types.map { |listing_type| [listing_type.title, listing_type.id] },
+      value: listing.listing_type_id || params[:listing_type_id] || "",
+    ) %>
+  </div>
+
+  <div class="flex flex-wrap mb-2">
+    <%= component("Form/Field",
       attribute_key: :title,
       form: form,
       label: "Title",
