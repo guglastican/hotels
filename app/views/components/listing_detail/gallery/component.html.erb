@@ -7,7 +7,7 @@
     "
   >
     <% images.each do |image| %>
-      <%= component("ListingDetail/Gallery/Image", image: image) %>
+      <%= component("ListingDetail/Gallery/Image", listing: listing, image: image) %>
     <% end %>
   </div>
 <% end %>

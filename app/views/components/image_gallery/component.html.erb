@@ -1,0 +1,15 @@
+<section
+  class="
+    columns-1
+    md:columns-2
+    gap-2
+    space-y-2
+    max-w-3xl
+    w-full
+    mx-auto
+  "
+>
+  <% images.each do |image| %>
+    <%= component("ImageGallery/Image", image: image) %>
+  <% end %>
+</section>

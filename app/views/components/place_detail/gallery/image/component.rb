@@ -2,4 +2,5 @@
 
 class PlaceDetail::Gallery::Image::Component < ApplicationViewComponent
   option :image
+  option :place
 end

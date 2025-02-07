@@ -1,11 +1,12 @@
 module V1
   class ListingsController < BaseController
-    before_action :set_listing, only: %i[ show gallery ]
+    before_action :set_listing, only: %i[ show images ]
 
     def show
     end
 
-    def gallery
+    def images
+      @images = @listing.images.ordered
     end
 
     private

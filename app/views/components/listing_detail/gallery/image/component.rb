@@ -2,4 +2,5 @@
 
 class ListingDetail::Gallery::Image::Component < ApplicationViewComponent
   option :image
+  option :listing
 end

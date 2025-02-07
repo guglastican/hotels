@@ -46,7 +46,7 @@ Rails.application.routes.draw do
     # Listings
     resources :listings, only: [ :show ] do
       member do
-        get :gallery
+        get :images, to: "listings#images"
       end
     end
 
@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     # Places
     resources :places, only: [ :show ] do
       member do
-        get :gallery
+        get :images, to: "places#images"
       end
     end
   end

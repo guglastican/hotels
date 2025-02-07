@@ -1,8 +1,12 @@
 module V1
   class PlacesController < BaseController
-    before_action :set_place, only: %i[ show ]
+    before_action :set_place, only: %i[ show images ]
 
     def show
+    end
+
+    def images
+      @images = @place.images.ordered
     end
 
     private

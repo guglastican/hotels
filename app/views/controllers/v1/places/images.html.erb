@@ -1,0 +1,11 @@
+<%= component("NavigationBar") %>
+
+<%= component("ContentWrapper") do %>
+  <%= component("ListingLayout/Breadcrumb", page_title: "Gallery") do %>
+    <%= link_to "Back to #{@place.title}", v1_place_path(@place), class: "underline" %>
+  <% end %>
+
+  <%= component("ImageGallery", images: @images) %>
+<% end %>
+
+<%= component("Footer") %>
