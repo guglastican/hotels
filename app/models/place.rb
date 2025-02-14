@@ -13,12 +13,28 @@ class Place < ApplicationRecord
   belongs_to :place_type
   belongs_to :geo_region
 
+  has_many :custom_field_values, as: :subject, dependent: :destroy
+  has_many :custom_fields, through: :custom_field_values
+  has_many :images, as: :subject, dependent: :destroy
   has_many :listings
-  has_many :images, as: :subject
+
+  accepts_nested_attributes_for :custom_field_values, reject_if: :reject_blank, allow_destroy: true
 
   validates :title, presence: true
 
   def default_image
     images.order(sort: :asc).first
   end
+
+  private
+
+    def reject_blank(attributes)
+      if attributes[:value].blank?
+        if attributes[:id].present?
+          attributes.merge!({ _destroy: 1 }) && false
+        else
+          true
+        end
+      end
+    end
 end

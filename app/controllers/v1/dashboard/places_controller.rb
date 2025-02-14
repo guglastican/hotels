@@ -70,10 +70,12 @@ module V1
       private
 
         def set_place
-          @place = Place.find(params[:id])
+          @place = Place.eager_load(custom_field_values: :custom_field)
+            .find(params[:id])
         end
 
         def set_form_deps
+          @custom_fields = policy_scope(CustomField).where(subject_type: "Place")
           @place_types = policy_scope(PlaceType)
           @geo_regions = policy_scope(GeoRegion)
         end
@@ -85,6 +87,11 @@ module V1
               :geo_region_id,
               :place_type_id,
               :title,
+              custom_field_values_attributes: [
+                :custom_field_id,
+                :id,
+                :value
+              ],
             )
         end
     end

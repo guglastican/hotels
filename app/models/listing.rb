@@ -14,7 +14,9 @@ class Listing < ApplicationRecord
   belongs_to :organization
   belongs_to :place
 
-  has_many :images, as: :subject
+  has_many :custom_field_values, as: :subject, dependent: :destroy
+  has_many :custom_fields, through: :custom_field_values
+  has_many :images, as: :subject, dependent: :destroy
 
   def default_image
     images.order(sort: :asc).first

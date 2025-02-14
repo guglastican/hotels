@@ -15,6 +15,7 @@ module V1
         @place = Place.eager_load(
           :geo_region,
           :place_type,
+          custom_field_values: :custom_field,
         )
           .find(params[:id])
       end

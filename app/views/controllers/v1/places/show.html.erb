@@ -6,6 +6,7 @@
   <%= component("ListingLayout") do |listing_layout| %>
     <% listing_layout.with_main_content do %>
       <%= component("PlaceDetail/Description", place: @place) %>
+      <%= component("PlaceDetail/Custom_Fields", place: @place) %>
       <%= component("PlaceDetail/Accommodation", place: @place) %>
     <% end %>
 

@@ -45,6 +45,54 @@
     ) %>
   </div>
 
+  <% if defined?(custom_fields) %>
+    <%
+      custom_fields.each do |custom_field|
+        custom_field_value = place.custom_field_values.find { |v| v.custom_field == custom_field }
+    %>
+      <div class="flex flex-col flex-wrap mb-2">
+        <%= component("Form/Label", form: form) { custom_field.title } %>
+
+        <input
+          hidden
+          name="place[custom_field_values_attributes][][id]"
+          type="text"
+          value="<%= custom_field_value&.id %>"
+        />
+
+        <input
+          hidden
+          name="place[custom_field_values_attributes][][custom_field_id]"
+          type="text"
+          value="<%= custom_field.id %>"
+        />
+
+        <input
+          class="
+            appearance-none
+            bg-field-background
+            block
+            border
+            border-field-border
+            focus:bg-field-background-active
+            focus:border-gray-500
+            focus:outline-none
+            leading-tight
+            mb-3
+            px-4
+            py-3
+            rounded
+            text-text
+            w-full
+          "
+          name="place[custom_field_values_attributes][][value]"
+          type="text"
+          value="<%= custom_field_value&.value %>"
+        />
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="flex flex-wrap gap-2 mb-2" id="images">
     <%= component("UploadDropzone",
       allowed_file_types: ["image/*"],

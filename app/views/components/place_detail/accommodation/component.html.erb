@@ -9,7 +9,7 @@
       mt-4
     "
   >
-    <% place.listings.limit(4).each do |listing| %>
+    <% listings.each do |listing| %>
       <%= component("ListingTile", listing: listing) %>
     <% end %>
   </div>

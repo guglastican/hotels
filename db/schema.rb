@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_31_043720) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_14_033945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,27 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_31_043720) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "custom_field_values", force: :cascade do |t|
+    t.bigint "custom_field_id"
+    t.string "subject_type"
+    t.bigint "subject_id"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["custom_field_id"], name: "index_custom_field_values_on_custom_field_id"
+    t.index ["subject_type", "subject_id"], name: "index_custom_field_values_on_subject"
+  end
+
+  create_table "custom_fields", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "title"
+    t.string "description"
+    t.string "subject_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_custom_fields_on_key", unique: true
   end
 
   create_table "geo_regions", force: :cascade do |t|

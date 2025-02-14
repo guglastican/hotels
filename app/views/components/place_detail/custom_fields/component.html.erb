@@ -1,0 +1,14 @@
+<%= component("ListingLayout/Content_Module", title: "What this place offers") do %>
+  <div
+    class="
+      grid
+      grid-cols-2
+      gap-2
+      w-full
+    "
+  >
+    <% custom_field_values.each do |custom_field_value| %>
+      <%= component("PlaceDetail/Custom_Fields/Value", custom_field_value: custom_field_value) %>
+    <% end %>
+  </div>
+<% end %>

@@ -15,6 +15,7 @@
     <% container.with_main_content do %>
       <div class="w-full max-w-[640px]">
       <%= render partial: "v1/dashboard/places/form", locals: {
+        custom_fields: @custom_fields,
         geo_regions: @geo_regions,
         place: @place,
         place_types: @place_types,
