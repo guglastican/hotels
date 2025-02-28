@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     namespace :dashboard do
       # Images
       post "images/create_from_file"
+      put "images/update_sort"
 
       # Places
       resources :places

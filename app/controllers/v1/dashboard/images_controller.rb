@@ -27,6 +27,22 @@ module V1
           end
         end
       end
+
+      def update_sort
+        @images = policy_scope(Image).where(id: params[:sorted_ids])
+        authorize @images, :index?
+
+        params[:sorted_ids].each_with_index do |image_id, index|
+          image = @images.find { |i| i.id == image_id.to_i }
+          next if !image
+
+          image.update(sort: index)
+        end
+
+        respond_to do |format|
+          format.json { render json: { success: true } }
+        end
+      end
     end
   end
 end

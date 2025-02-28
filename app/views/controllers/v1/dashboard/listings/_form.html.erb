@@ -102,9 +102,14 @@
     ) %>
   </div>
 
-  <div class="flex flex-wrap gap-2 mb-2" id="images">
-    <% listing.images.each do |image| %>
-      <%= component("Dashboard/Image_Thumb", image: image) %>
+  <div class="flex flex-wrap gap-2 mb-2">
+    <%= component("SortableGrid",
+      container_id: "images",
+      update_url: v1_dashboard_images_update_sort_path(format: :json),
+    ) do %>
+      <% listing.images.each do |image| %>
+        <%= component("Dashboard/Image_Thumb", image: image) %>
+      <% end %>
     <% end %>
 
     <%= component("UploadDropzone",

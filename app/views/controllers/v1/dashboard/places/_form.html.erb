@@ -93,7 +93,16 @@
     <% end %>
   <% end %>
 
-  <div class="flex flex-wrap gap-2 mb-2" id="images">
+  <div class="flex flex-wrap gap-2 mb-2">
+    <%= component("SortableGrid",
+      container_id: "images",
+      update_url: v1_dashboard_images_update_sort_path(format: :json),
+    ) do %>
+      <% place.images.each do |image| %>
+        <%= component("Dashboard/Image_Thumb", image: image) %>
+      <% end %>
+    <% end %>
+
     <%= component("UploadDropzone",
       allowed_file_types: ["image/*"],
       field_name: "image[file]",
@@ -103,10 +112,6 @@
         subject_id: place.id,
       ),
     ) %>
-
-    <% place.images.each do |image| %>
-      <%= component("Dashboard/Image_Thumb", image: image) %>
-    <% end %>
   </div>
 
   <%= component("Button",
