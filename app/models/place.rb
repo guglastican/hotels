@@ -26,6 +26,20 @@ class Place < ApplicationRecord
     images.order(sort: :asc).first
   end
 
+  def slug
+    sqids = Sqids.new(min_length: 10)
+    id = sqids.encode([ self.id ])
+
+    "#{title.parameterize}-#{id}"
+  end
+
+  def self.find_by_slug(slug)
+    return if slug.blank?
+    _, _, id = slug.rpartition("-")
+
+    Place.find_by(id: Sqids.new.decode(id))
+  end
+
   private
 
     def reject_blank(attributes)

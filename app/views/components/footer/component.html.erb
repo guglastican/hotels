@@ -8,7 +8,15 @@
   "
 >
   <%= component("ContentWrapper") do %>
-    Add Footer template here
+    <ul>
+      <% popular_places.each do |record| %>
+        <li>
+          <%= link_to "#{record.listing_type_title} in #{record.place_title}",
+            v1_listings_directory_path(place_slug: Place.new(id: record.place_id, title: record.place_title).slug, listing_type_key: record.listing_type_key)
+          %>
+        </li>
+      <% end %>
+    </ul>
   <% end %>
 </footer>
 

@@ -19,7 +19,6 @@ module V1
           .with_pg_search_rank
       end
 
-
       # Combine Results
       @results = (@listings + @places).sort_by { |r| -r[:pg_search_rank] }
     end

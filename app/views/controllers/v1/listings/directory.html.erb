@@ -1,0 +1,32 @@
+<%= component("NavigationBar") %>
+
+<%= component("ContentWrapper") do %>
+  <div
+  class="
+    flex
+    flex-col
+    gap-8
+    my-16
+  "
+>
+  <div
+    class="
+      flex
+      flex-col
+    "
+  >
+    <h1
+      class="
+        font-bold
+        leading-snug
+        text-4xl
+      "
+    >
+      <%= "#{@listing_type.title} in #{@place.title}" %>
+    </h1>
+  </div>
+
+  <%= component("SearchPage/Results", results: @listings) %>
+<% end %>
+
+<%= component("Footer") %>

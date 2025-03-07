@@ -85,3 +85,6 @@ gem "dockerfile-rails", ">= 1.7", group: :development
 
 # AWS S3 SDK
 gem "aws-sdk-s3", require: false
+
+# Unique IDs from Numbers [https://github.com/sqids/sqids-ruby]
+gem "sqids"

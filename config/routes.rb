@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     get :search, to: "home#search"
 
     # Listings
+    get "listings/:place_slug/:listing_type_key", to: "listings#directory", as: :listings_directory
     resources :listings, only: [ :show ] do
       member do
         get :images, to: "listings#images"
