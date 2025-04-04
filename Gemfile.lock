@@ -126,6 +126,17 @@ GEM
     drb (2.2.1)
     dry-initializer (3.1.1)
     erubi (1.13.0)
+    event_stream_parser (1.0.0)
+    faraday (2.12.2)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-multipart (1.1.0)
+      multipart-post (~> 2.0)
+    faraday-net_http (3.4.0)
+      net-http (>= 0.5.0)
+    faraday-retry (2.3.1)
+      faraday (~> 2.0)
     ffi (1.17.0-aarch64-linux-gnu)
     ffi (1.17.0-arm64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
@@ -169,6 +180,9 @@ GEM
     mini_mime (1.1.5)
     minitest (5.25.1)
     msgpack (1.7.3)
+    multipart-post (2.4.1)
+    net-http (0.6.0)
+      uri
     net-imap (0.5.0)
       date
       net-protocol
@@ -279,6 +293,13 @@ GEM
     ruby-vips (2.2.2)
       ffi (~> 1.12)
       logger
+    ruby_llm (1.0.1)
+      base64
+      event_stream_parser (~> 1)
+      faraday (~> 2)
+      faraday-multipart (~> 1)
+      faraday-retry (~> 2)
+      zeitwerk (~> 2)
     rubyzip (2.3.2)
     securerandom (0.3.1)
     selenium-webdriver (4.26.0)
@@ -306,6 +327,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
+    uri (1.0.3)
     useragent (0.16.10)
     view_component (3.20.0)
       activesupport (>= 5.2.0, < 8.1)
@@ -354,6 +376,7 @@ DEPENDENCIES
   pundit (~> 2.4)
   rails (~> 7.2.1, >= 7.2.1.1)
   rubocop-rails-omakase
+  ruby_llm
   selenium-webdriver
   sprockets-rails
   sqids

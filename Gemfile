@@ -88,3 +88,6 @@ gem "aws-sdk-s3", require: false
 
 # Unique IDs from Numbers [https://github.com/sqids/sqids-ruby]
 gem "sqids"
+
+# Ruby LLm [https://github.com/crmne/ruby_llm]
+gem "ruby_llm"

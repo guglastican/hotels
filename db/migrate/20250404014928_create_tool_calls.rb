@@ -1,0 +1,11 @@
+class CreateToolCalls < ActiveRecord::Migration[7.2]
+  def change
+    create_table :tool_calls do |t|
+      t.references :message, null: false, foreign_key: true
+      t.string :tool_call_id, null: false
+      t.string :name, null: false
+      t.jsonb :arguments, default: {}
+      t.timestamps
+    end
+  end
+end
